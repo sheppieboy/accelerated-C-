@@ -1,3 +1,6 @@
+#ifndef GUARD_median_h
+#define GUARD_median_h
+// median.h—final version
 #include <vector>
-using std::vector;
-double median(vector<double>);
+double median(std::vector<double>);
+#endif
