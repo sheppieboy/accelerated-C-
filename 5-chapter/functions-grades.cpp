@@ -26,19 +26,31 @@ bool fgrade(const Student_info& s){
 vector<Student_info> extract_fails(vector<Student_info>& students){
     vector<Student_info>fail;
 
-    vector<Student_info>::size_type i = 0;
-    while( i != students.size()){
-        if(fgrade(students[i])){
-            fail.push_back(students[i]);
-            students.erase(students.begin() + i);
+    vector<Student_info>::iterator iter = students.begin();
+    
+    while( iter != students.end()){
+        if(fgrade(*iter)){
+            fail.push_back(*iter);
+            iter = students.erase(iter);
         }else{
-            i++;
+            ++iter;
         }
     }
     
    
     return fail;
 }
+
+
+//iterator to print students names
+int print_students(const vector<Student_info>&students){
+    for(vector<Student_info>::const_iterator iter = students.begin(); iter != students.end(); iter++){
+        //dereferencing returns an lvalue and that lvalue is the value that iter is referencing
+         cout << (*iter).name <<endl; // OR cout << iter->name << endl ...... This is known as dereferencing
+    }
+    return 0;
+}
+
 
 int main(){
     vector<Student_info> students;
@@ -72,5 +84,7 @@ int main(){
     return 0;
 
 }
+
+
 
 
